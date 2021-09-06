@@ -63,5 +63,13 @@
     "*.js": [
       "wrap --fix"
     ]
-  }
+  },
+  "keywords": [
+    "color",
+    "conversion",
+    "rgb to hex",
+    "hex to rgb",
+    "hsl to rgb",
+    "tiny"
+  ]
 }
