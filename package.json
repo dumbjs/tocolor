@@ -1,16 +1,13 @@
 {
   "name": "@barelyhuman/tocolor",
+  "repository": "git@github.com:barelyhuman/tocolor.git",
   "version": "0.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "source": "src/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "author": {
-    "email": "ahoy@barelyhuman.dev",
-    "name": "Reaper",
-    "url": "https://reaper.im"
-  },
+  "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/index.esm.js"
