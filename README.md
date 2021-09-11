@@ -16,15 +16,15 @@ A very small library built for general color conversion. It does one thing and d
 ## Installation
 
 ```sh
-  npm install tocolor
+  npm install @barelyhuman/tocolor
   #or
-  yarn add tocolor
+  yarn add @barelyhuman/tocolor
 ```
 
 ## Usage
 
 ```js
-import { hexToHSL, hslToHex } from "tocolor";
+import { hexToHSL, hslToHex } from "@barelyhuman/tocolor";
 
 function darker(percentage, hex) {
   if (!percentage) {
@@ -84,7 +84,7 @@ Follow the general github flow of Fork => PR, make sure that you let the authors
 
 ## Support
 
-For support, email ahoy@barelyhuman.dev
+For support, email <ahoy@barelyhuman.dev>
 
 ## License
 
