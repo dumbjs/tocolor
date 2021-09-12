@@ -9,8 +9,8 @@
   "types": "dist/index.d.ts",
   "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.esm.js"
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.js"
   },
   "files": [
     "dist/*"
@@ -21,7 +21,8 @@
     "fix": "wrap --fix",
     "test": "uvu -r esm tests",
     "size": "GITHUB_TOKEN='' bundlesize",
-    "prepare": "npm run build; husky install"
+    "prepare": "npm run build; husky install",
+    "prepublishOnly": "rm -rf dist; npm run build; npm run size;"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
