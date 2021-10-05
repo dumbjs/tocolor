@@ -143,3 +143,42 @@ export function hexToHSL (hex) {
   const { r, g, b } = hexToRGB(hex)
   return rgbToHSL(r, g, b)
 }
+
+export function parseToHex (colorstring) {
+  const rgbMatcher = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/
+  const hslMatcher = /^hsl\(\s*(\d+)\s*,\s*(\d+)%*\s*,\s*(\d+)%*\s*\)$/
+
+  switch (true) {
+    case rgbMatcher.test(colorstring): {
+      const _values = colorstring.match(rgbMatcher)
+      if (_values && _values.length) {
+        return rgbToHex(
+          parseInt(_values[1], 10),
+          parseInt(_values[2], 10),
+          parseInt(_values[3], 10)
+        )
+      } else {
+        throw new Error('Invalid RGB String')
+      }
+    }
+    case hslMatcher.test(colorstring): {
+      const _values = colorstring.match(hslMatcher)
+      if (_values && _values.length) {
+        return hslToHex(
+          parseInt(_values[1], 10),
+          parseInt(_values[2], 10),
+          parseInt(_values[3], 10)
+        )
+      } else {
+        throw new Error('Invalid HSL String')
+      }
+    }
+    default: {
+      const _value = normalizeHex(colorstring)
+      if (_value.length > 6) {
+        throw new Error('Invalid Hex String')
+      }
+      return _value
+    }
+  }
+}

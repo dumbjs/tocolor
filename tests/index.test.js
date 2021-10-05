@@ -6,7 +6,8 @@ const {
   hslToHex,
   hslToRGB,
   rgbToHSL,
-  rgbToHex
+  rgbToHex,
+  parseToHex
 } = require('../src')
 const { normalizeHex } = require('../src/lib/utils')
 
@@ -183,6 +184,54 @@ test('rgb to hsl', () => {
     assert.equal(convertedColor.s, ref.s)
     assert.equal(convertedColor.l, ref.l)
   })
+})
+
+test('parse to hex - rgb', () => {
+  Object.keys(colors).forEach((color) => {
+    const { r, g, b } = MATCH_MAPPERS[color].rgb
+    const rgbString = `rgb(${r}, ${g}, ${b})`
+    const convertedColor = parseToHex(rgbString)
+    const ref = MATCH_MAPPERS[color].hex
+    assert.equal(normalizeHex(ref), normalizeHex(convertedColor))
+  })
+})
+
+test('parse to hex - hsl', () => {
+  Object.keys(colors).forEach((color) => {
+    const { h, s, l } = MATCH_MAPPERS[color].hsl
+    const hslString = `hsl(${h}, ${s}, ${l})`
+    const convertedColor = parseToHex(hslString)
+    const ref = MATCH_MAPPERS[color].hex
+    assert.equal(normalizeHex(ref), normalizeHex(convertedColor))
+  })
+})
+
+test('parse to hex - hsl with percentage', () => {
+  Object.keys(colors).forEach((color) => {
+    const { h, s, l } = MATCH_MAPPERS[color].hsl
+    const hslString = `hsl(${h}, ${s}%, ${l}%)`
+    const convertedColor = parseToHex(hslString)
+    const ref = MATCH_MAPPERS[color].hex
+    assert.equal(normalizeHex(ref), normalizeHex(convertedColor))
+  })
+})
+
+test('parse to hex - hex', () => {
+  Object.keys(colors).forEach((color) => {
+    const hexString = MATCH_MAPPERS[color].hex
+    const convertedColor = parseToHex(hexString)
+    const ref = MATCH_MAPPERS[color].hex
+    assert.equal(normalizeHex(ref), normalizeHex(convertedColor))
+  })
+})
+
+test('parse to hex - invalid string', () => {
+  try {
+    const hexString = '123kjb2b1k1'
+    parseToHex(hexString)
+  } catch (err) {
+    assert.equal(err.message, 'Invalid Hex String')
+  }
 })
 
 test.run()
