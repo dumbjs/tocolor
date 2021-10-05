@@ -11,9 +11,11 @@ const {
 const { normalizeHex } = require('../src/lib/utils')
 
 const colors = {
-  black: '#000000',
+  black3: '#000',
+  black6: '#000000',
   white: '#FFFFFF',
-  red: '#FF0000',
+  red3: '#F00',
+  red6: '#FF0000',
   lime: '#00FF00',
   blue: '#0000FF',
   yellow: '#FFFF00',
@@ -30,7 +32,12 @@ const colors = {
 }
 
 const MATCH_MAPPERS = {
-  black: {
+  black3: {
+    hex: '#000000',
+    rgb: { r: 0, g: 0, b: 0 },
+    hsl: { h: 0, s: 0, l: 0 }
+  },
+  black6: {
     hex: '#000000',
     rgb: { r: 0, g: 0, b: 0 },
     hsl: { h: 0, s: 0, l: 0 }
@@ -40,7 +47,12 @@ const MATCH_MAPPERS = {
     rgb: { r: 255, g: 255, b: 255 },
     hsl: { h: 0, s: 0, l: 100 }
   },
-  red: {
+  red3: {
+    hex: '#FF0000',
+    rgb: { r: 255, g: 0, b: 0 },
+    hsl: { h: 0, s: 100, l: 50 }
+  },
+  red6: {
     hex: '#FF0000',
     rgb: { r: 255, g: 0, b: 0 },
     hsl: { h: 0, s: 100, l: 50 }

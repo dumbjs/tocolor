@@ -128,7 +128,7 @@ export function rgbToHSL (r, g, b) {
 }
 
 export function hexToRGB (hex) {
-  const colorString = hex.replace(/^#/, '')
+  const colorString = normalizeHex(hex)
   const r = hexToInt(colorString, 0)
   const g = hexToInt(colorString, 2)
   const b = hexToInt(colorString, 4)
