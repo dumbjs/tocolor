@@ -4,14 +4,16 @@ import Box from '@zincui/box'
 import { useEffect, useState } from 'react'
 import { parseToHex, hexToRGB, hexToHSL } from '../../dist/index'
 
+const defaultHex = '#18181b'
+
 export const App = () => {
-  const [value, setValue] = useState('#18181b')
+  const [value, setValue] = useState(defaultHex)
 
   useEffect(() => {
     try {
       document.body.style.backgroundColor = '#' + parseToHex(value)
     } catch (err) {
-      document.body.style.backgroundColor = '#' + parseToHex('18181b')
+      document.body.style.backgroundColor = '#' + parseToHex(defaultHex)
     }
   }, [value])
 
@@ -23,7 +25,7 @@ export const App = () => {
     asRGB = hexToRGB(asHex)
     asHSL = hexToHSL(asHex)
   } catch (err) {
-    asHex = parseToHex('#fff')
+    asHex = parseToHex(defaultHex)
     asRGB = hexToRGB(asHex)
     asHSL = hexToHSL(asHex)
   }
