@@ -38,6 +38,11 @@
     "standard": "^16.0.3",
     "uvu": "^0.5.1"
   },
+  "standard": {
+    "ignore": [
+      "docs"
+    ]
+  },
   "bundlesize": [
     {
       "path": "./dist/**/*.js",
@@ -57,11 +62,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "lint-staged": {
-    "*.js": [
-      "wrap --fix"
-    ]
-  },
   "keywords": [
     "color",
     "conversion",
@@ -69,5 +69,9 @@
     "hex to rgb",
     "hsl to rgb",
     "tiny"
-  ]
+  ],
+  "dependencies": {
+    "@zincui/box": "^0.0.3",
+    "@zincui/input": "^0.0.3"
+  }
 }

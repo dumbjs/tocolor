@@ -6,9 +6,13 @@
 
 body {
   --base: var(--zinc-900);
+  --surface: var(--zinc-800);
+  --overlay: var(--zinc-700);
   --text: var(--zinc-300);
   --bright: var(--zinc-100);
   --dim: var(--zinc-400);
+
+  --accent: #56b6c2;
 
   background-color: var(--base);
   color: var(--text);
@@ -34,4 +38,14 @@ a:hover {
 
 .text-dim {
   color: var(--dim);
+}
+
+code:not([class^="language-"]) {
+  color: var(--accent);
+}
+
+pre {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--overlay);
 }

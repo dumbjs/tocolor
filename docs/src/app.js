@@ -3,6 +3,7 @@ import Input from '@zincui/input'
 import Box from '@zincui/box'
 import { useEffect, useState } from 'react'
 import { parseToHex, hexToRGB, hexToHSL } from '../../dist/index'
+import Documentation from './components/documentation.mdx'
 
 const defaultHex = '#18181b'
 
@@ -48,29 +49,28 @@ export const App = () => {
       >
         <Box style={{ width: '100%' }}>
           <Input
+            paddingX-26
+            autoFocus
+            placeholder='Enter a color value in hex, rgb, hsl'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
             style={{
               height: 58,
               width: '100%',
-              borderRadius: 10,
-              paddingLeft: 26,
-              paddingRight: 26
+              borderRadius: 10
             }}
-            placeholder='Enter a color value in hex, rgb, hsl'
-            value={value}
-            autoFocus
-            onChange={(e) => setValue(e.target.value)}
           />
 
           <Box margin-12>
             <Box
+              flex
+              justBetween
+              flex-1
+              padding-8
               style={{
                 backgroundColor: 'var(--zinc-800)',
-                padding: 8,
-                flex: 1,
                 borderRadius: 10,
-                display: 'flex',
-                width: '100%',
-                justifyContent: 'space-between'
+                width: '100%'
               }}
             >
               <Box margin-8>
@@ -87,6 +87,17 @@ export const App = () => {
             </Box>
           </Box>
         </Box>
+      </Box>
+      <Box
+        marginT-100
+        padding-8
+        paddingX-24
+        style={{
+          borderRadius: 10,
+          backgroundColor: 'var(--zinc-800)'
+        }}
+      >
+        <Documentation />
       </Box>
     </>
   )
