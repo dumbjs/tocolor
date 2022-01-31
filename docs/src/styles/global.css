@@ -49,3 +49,10 @@ pre {
   padding: 10px;
   background-color: var(--overlay);
 }
+
+.kbd {
+  background-color: var(--overlay);
+  padding: 4px;
+  border-radius: 4px;
+  margin: 4px;
+}

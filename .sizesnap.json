@@ -1,0 +1,12 @@
+{
+  "dist/index.esm.js": {
+    "size": "5.21KB",
+    "brotli": "1.22KB",
+    "gzip": "1.36KB"
+  },
+  "dist/index.js": {
+    "size": "5.43KB",
+    "brotli": "1.27KB",
+    "gzip": "1.44KB"
+  }
+}
