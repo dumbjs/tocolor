@@ -1,16 +1,24 @@
 {
   "name": "@barelyhuman/tocolor",
-  "repository": "git@github.com:barelyhuman/tocolor.git",
   "version": "0.0.7",
+  "keywords": [
+    "color",
+    "conversion",
+    "rgb to hex",
+    "hex to rgb",
+    "hsl to rgb",
+    "tiny"
+  ],
+  "repository": "git@github.com:barelyhuman/tocolor.git",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.js"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/*"
   ],
@@ -18,10 +26,10 @@
     "build": "wrap -i src/index.js -m; shx cp src/*.d.ts dist",
     "dev": "wrap -w",
     "fix": "wrap --fix",
-    "test": "uvu -r esm tests",
-    "size": "sizesnap",
     "prepare": "npm run build",
-    "prepublishOnly": "rm -rf dist; npm run build; npm run size;"
+    "prepublishOnly": "rm -rf dist; npm run build; npm run size;",
+    "size": "sizesnap",
+    "test": "uvu -r esm tests"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
@@ -37,25 +45,17 @@
     "standard": "^16.0.3",
     "uvu": "^0.5.1"
   },
-  "standard": {
-    "ignore": [
-      "docs"
-    ]
+  "publishConfig": {
+    "access": "public"
   },
   "sizesnap": {
     "files": [
       "./dist/**/*.js"
     ]
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "color",
-    "conversion",
-    "rgb to hex",
-    "hex to rgb",
-    "hsl to rgb",
-    "tiny"
-  ]
+  "standard": {
+    "ignore": [
+      "docs"
+    ]
+  }
 }
