@@ -3,8 +3,8 @@ pre-commit:
   commands:
     linter:
       files: git diff --name-only @{push}
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: '*.{js,ts,jsx,tsx}'
       run: npx prettier --write {files}; git add {files}
     pkg:
-      glob: "package.json"
+      glob: 'package.json'
       run: npx sort-package-json; git add package.json

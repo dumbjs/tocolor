@@ -24,16 +24,16 @@ A very small library built for general color conversion. It does one thing and d
 ## Usage
 
 ```js
-import { hexToHSL, hslToHex } from "@barelyhuman/tocolor";
+import {hexToHSL, hslToHex} from '@barelyhuman/tocolor'
 
 function darker(percentage, hex) {
-  if (!percentage) {
-    return this;
-  }
-  const { h, s, l } = hexToHSL(hex);
-  const _afterDarken = l - percentage;
-  const value = hslToHex(h, s, _afterDarken);
-  return value;
+	if (!percentage) {
+		return this
+	}
+	const {h, s, l} = hexToHSL(hex)
+	const _afterDarken = l - percentage
+	const value = hslToHex(h, s, _afterDarken)
+	return value
 }
 ```
 
@@ -41,16 +41,16 @@ function darker(percentage, hex) {
 
 ```tsx
 type RGBEnum = {
-  r: number;
-  g: number;
-  b: number;
-};
+	r: number
+	g: number
+	b: number
+}
 
 type HSLEnum = {
-  h: number;
-  s: number;
-  l: number;
-};
+	h: number
+	s: number
+	l: number
+}
 
 /**
  * @name rgbToHex
@@ -62,7 +62,7 @@ type HSLEnum = {
  * rgbToHex(255,255,255) //=> ffffff
  * @returns {string}
  */
-export declare function rgbToHex(r: number, g: number, b: number): string;
+export declare function rgbToHex(r: number, g: number, b: number): string
 
 /**
  * @name hslToHex
@@ -74,7 +74,7 @@ export declare function rgbToHex(r: number, g: number, b: number): string;
  * hslToHex(0,0,100) //=> ffffff
  * @returns {string}
  */
-export declare function hslToHex(h: number, s: number, l: number): string;
+export declare function hslToHex(h: number, s: number, l: number): string
 
 /**
  * @name hslToRGB
@@ -86,7 +86,7 @@ export declare function hslToHex(h: number, s: number, l: number): string;
  * hslToRGB(0,0,100) //=> {r:255,g:255,b:255}
  * @returns @type {RGBEnum}
  */
-export declare function hslToRGB(h: number, s: number, l: number): RGBEnum;
+export declare function hslToRGB(h: number, s: number, l: number): RGBEnum
 
 /**
  * @name rgbToHSL
@@ -98,7 +98,7 @@ export declare function hslToRGB(h: number, s: number, l: number): RGBEnum;
  * rgbToHSL(255,255,255) //=> {h:0,s:0,l:100}
  * @returns @type {HSLEnum}
  */
-export declare function rgbToHSL(r: number, g: number, b: number): HSLEnum;
+export declare function rgbToHSL(r: number, g: number, b: number): HSLEnum
 
 /**
  * @name hexToRGB
@@ -108,7 +108,7 @@ export declare function rgbToHSL(r: number, g: number, b: number): HSLEnum;
  * hexToRGB("#fff") //=> {r:255,g:255,b:255}
  * @returns @type {RGBEnum}
  */
-export declare function hexToRGB(hex: string): RGBEnum;
+export declare function hexToRGB(hex: string): RGBEnum
 
 /**
  * @name hexToHSL
@@ -118,7 +118,7 @@ export declare function hexToRGB(hex: string): RGBEnum;
  * hexToHSL("#fff") //=> {h:0,s:0,l:100}
  * @returns @type {HSLEnum}
  */
-export declare function hexToHSL(hex: string): HSLEnum;
+export declare function hexToHSL(hex: string): HSLEnum
 
 /**
  * @name parseToHex
@@ -132,7 +132,7 @@ export declare function hexToHSL(hex: string): HSLEnum;
  * parseToHex("#fff") //=> ffffff
  * @returns {string} 6 digit color hex
  */
-export declare function parseToHex(colorstring: string): string;
+export declare function parseToHex(colorstring: string): string
 ```
 
 ## Contributing

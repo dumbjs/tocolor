@@ -1,61 +1,55 @@
 {
-  "name": "@barelyhuman/tocolor",
-  "version": "0.0.7",
-  "keywords": [
-    "color",
-    "conversion",
-    "rgb to hex",
-    "hex to rgb",
-    "hsl to rgb",
-    "tiny"
-  ],
-  "repository": "git@github.com:barelyhuman/tocolor.git",
-  "license": "MIT",
-  "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.js"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist/*"
-  ],
-  "scripts": {
-    "build": "wrap -i src/index.js -m; shx cp src/*.d.ts dist",
-    "dev": "wrap -w",
-    "fix": "wrap --fix",
-    "prepare": "npm run build",
-    "prepublishOnly": "rm -rf dist; npm run build; npm run size;",
-    "size": "sizesnap",
-    "test": "uvu -r esm tests"
-  },
-  "devDependencies": {
-    "@arkweid/lefthook": "^0.7.7",
-    "@babel/core": "^7.15.5",
-    "@barelyhuman/wrap": "^1.0.5",
-    "@rollup/plugin-babel": "^5.3.0",
-    "esm": "^3.2.25",
-    "rollup": "^2.56.3",
-    "rollup-plugin-node-externals": "^3.1.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "shx": "^0.3.3",
-    "sizesnap": "^0.1.0",
-    "standard": "^16.0.3",
-    "uvu": "^0.5.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "sizesnap": {
-    "files": [
-      "./dist/**/*.js"
-    ]
-  },
-  "standard": {
-    "ignore": [
-      "docs"
-    ]
-  }
+	"name": "@barelyhuman/tocolor",
+	"version": "0.0.7",
+	"keywords": [
+		"color",
+		"conversion",
+		"rgb to hex",
+		"hex to rgb",
+		"hsl to rgb",
+		"tiny"
+	],
+	"repository": "git@github.com:barelyhuman/tocolor.git",
+	"license": "MIT",
+	"author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
+	"exports": {
+		"import": "./dist/index.mjs",
+		"require": "./dist/index.js"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/*"
+	],
+	"scripts": {
+		"build": "tsup src/index.js --format cjs,esm --clean --dts --target=node12.22 --minify",
+		"dev": "yarn run build -- --watch",
+		"fix": "prettier --write .",
+		"prepare": "npm run build",
+		"prepublishOnly": "rm -rf dist; npm run build; npm run size;",
+		"size": "sizesnap",
+		"test": "uvu -r esm tests"
+	},
+	"prettier": "@barelyhuman/prettier-config",
+	"devDependencies": {
+		"@arkweid/lefthook": "^0.7.7",
+		"@barelyhuman/prettier-config": "^0.1.0",
+		"esm": "^3.2.25",
+		"prettier": "^2.5.1",
+		"rollup": "^2.56.3",
+		"shx": "^0.3.3",
+		"sizesnap": "^0.1.0",
+		"tsup": "^5.11.13",
+		"typescript": "^4.5.5",
+		"uvu": "^0.5.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sizesnap": {
+		"files": [
+			"./dist/**/*"
+		]
+	}
 }

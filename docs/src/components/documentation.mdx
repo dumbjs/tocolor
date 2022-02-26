@@ -20,16 +20,16 @@
 ## Usage
 
 ```js
-import { hexToHSL, hslToHex } from "@barelyhuman/tocolor";
+import {hexToHSL, hslToHex} from '@barelyhuman/tocolor'
 
 function darker(percentage, hex) {
-  if (!percentage) {
-    return this;
-  }
-  const { h, s, l } = hexToHSL(hex);
-  const _afterDarken = l - percentage;
-  const value = hslToHex(h, s, _afterDarken);
-  return value;
+	if (!percentage) {
+		return this
+	}
+	const {h, s, l} = hexToHSL(hex)
+	const _afterDarken = l - percentage
+	const value = hslToHex(h, s, _afterDarken)
+	return value
 }
 ```
 

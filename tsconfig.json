@@ -1,0 +1,13 @@
+{
+	// Change this to match your project
+	"include": ["src/**/*", "tests"],
+	"compilerOptions": {
+		"allowJs": true,
+		"moduleResolution": "node",
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "dist",
+		"downlevelIteration": true,
+		"checkJs": true
+	},
+	"exclude": ["node_modules"]
+}
