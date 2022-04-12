@@ -28,7 +28,7 @@
 		"dev": "nr build -- --watch",
 		"fix": "prettier --write .",
 		"prepare": "nr build",
-		"release": "bumpp --commit; nr build; cd dist; pnpm publish; cd ..;",
+		"release": "bumpp --commit --tag; nr build; cd dist; pnpm publish; cd ..;",
 		"size": "sizesnap",
 		"test": "uvu -r tsm tests",
 		"copy": "shx cp package.json README.md license dist; json -I -f dist/package.json -e \"this.private=false; this.devDependencies=undefined; this.optionalDependencies=undefined; this.scripts=undefined; this.prettier=undefined; this.jest=undefined;this.directories=undefined;this.sizesnap=undefined\""
