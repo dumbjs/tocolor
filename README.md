@@ -8,7 +8,7 @@ A very small library built for general color conversion. It does one thing and d
 
 ## Features
 
-- 🤏 Tiny (623B brotli, 703B gzip)
+- 🤏 Tiny (623B brotli, 703B gzip, after minification)
 - 🌳 Tree shakable
 - 🌟 ESM Support
 - 🦍 backed by tests
