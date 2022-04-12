@@ -3,54 +3,31 @@ import {max, min, normalizeHex} from './lib/utils'
 const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
 
-/**
- * @typedef {object} RGBEnum
- * @property {number} r
- * @property {number} g
- * @property {number} b
- */
+interface RGB {
+	r: number
+	g: number
+	b: number
+}
 
-/**
- * @typedef {object} HSLEnum
- * @property {number} h
- * @property {number} s
- * @property {number} l
- */
+interface HSL {
+	h: number
+	s: number
+	l: number
+}
 
-/**
- *
- * @param {number} r
- * @param {number} g
- * @param {number} b
- * @returns {string}
- */
-export function rgbToHex(r, g, b) {
+export function rgbToHex(r: number, g: number, b: number) {
 	const red = padHex(r.toString(16))
 	const green = padHex(g.toString(16))
 	const blue = padHex(b.toString(16))
 	return normalizeHex(`${red}${green}${blue}`)
 }
 
-/**
- *
- * @param {number} h
- * @param {number} s
- * @param {number} l
- * @returns {string}
- */
-export function hslToHex(h, s, l) {
+export function hslToHex(h: number, s: number, l: number): string {
 	const {r, g, b} = hslToRGB(h, s, l)
 	return rgbToHex(r, g, b)
 }
 
-/**
- *
- * @param {number} h
- * @param {number} s
- * @param {number} l
- * @returns {RGBEnum}
- */
-export function hslToRGB(h, s, l) {
+export function hslToRGB(h: number, s: number, l: number): RGB {
 	const luminanceInBinary = l > 100 ? 1 : l / 100
 	const saturationInBinary = s > 100 ? 1 : s / 100
 	const chroma = (1 - Math.abs(2 * luminanceInBinary - 1)) * saturationInBinary
@@ -108,14 +85,7 @@ export function hslToRGB(h, s, l) {
 	}
 }
 
-/**
- *
- * @param {number} r
- * @param {number} g
- * @param {number} b
- * @returns {HSLEnum}
- */
-export function rgbToHSL(r, g, b) {
+export function rgbToHSL(r: number, g: number, b: number): HSL {
 	const pointR = r / 255
 	const pointG = g / 255
 	const pointB = b / 255
@@ -169,12 +139,7 @@ export function rgbToHSL(r, g, b) {
 	}
 }
 
-/**
- *
- * @param {string} hex
- * @returns {RGBEnum}
- */
-export function hexToRGB(hex) {
+export function hexToRGB(hex: string): RGB {
 	const colorString = normalizeHex(hex)
 	const r = hexToInt(colorString, 0)
 	const g = hexToInt(colorString, 2)
@@ -183,20 +148,16 @@ export function hexToRGB(hex) {
 }
 
 /**
- * @description convert a given hex value (1A) to it's integer value
- * @param {string} hex
- * @param {number} index
- * @returns {number}
+ * @description converts a sliced hex into it's integer equivalent
+ * ex: (000000,1), would take the 1st to digits 00 as hex and convert to int which
+ * is also 0
+ * but (FFFFFF,1) would give you FF /=> 255
  */
-export function hexToInt(hex, index) {
+export function hexToInt(hex: string, index: number): number {
 	return parseInt(hex.slice(index, index + 2), 16)
 }
 
-/**
- * @param {string} hex
- * @returns {HSLEnum}
- */
-export function hexToHSL(hex) {
+export function hexToHSL(hex: string): HSL {
 	const {r, g, b} = hexToRGB(hex)
 	return rgbToHSL(r, g, b)
 }
@@ -204,10 +165,8 @@ export function hexToHSL(hex) {
 /**
  * @description parse a given string of value hex / rgb / hsl format
  * into it's normalized hex variant
- * @param {string} colorstring
- * @returns {string}
  */
-export function parseToHex(colorstring) {
+export function parseToHex(colorstring: string): string {
 	const rgbMatcher = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/
 	const hslMatcher = /^hsl\(\s*(\d+)\s*,\s*(\d+)%*\s*,\s*(\d+)%*\s*\)$/
 

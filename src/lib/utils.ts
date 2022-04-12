@@ -20,7 +20,7 @@ export function max(...params) {
 	return res
 }
 
-export function normalizeHex(hex) {
+export function normalizeHex(hex: string): string {
 	let _hex = hex
 	const removedHash = String(hex).trim().replace(/^#/, '')
 	if (removedHash.length === 3) {

@@ -151,4 +151,4 @@ For support, email <ahoy@barelyhuman.dev>
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](/license)
