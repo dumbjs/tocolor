@@ -3,6 +3,10 @@ import {max, min, normalizeHex} from './lib/utils'
 const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
 
+// minfiable aliases for reused functions
+const toInt = x => parseInt(x, 10)
+const floor = Math.floor
+
 interface RGB {
 	r: number
 	g: number
@@ -37,7 +41,7 @@ export function hslToRGB(h: number, s: number, l: number): RGB {
 
 	let rTemp, gTemp, bTemp
 
-	const _huePointRounded = Math.floor(huePoint)
+	const _huePointRounded = floor(huePoint)
 
 	switch (true) {
 		case _huePointRounded >= 0 && _huePointRounded < 1: {
@@ -133,9 +137,9 @@ export function rgbToHSL(r: number, g: number, b: number): HSL {
 	}
 
 	return {
-		h: Math.floor(hue),
-		s: Math.floor(saturation * 100),
-		l: Math.floor(luminance * 100),
+		h: floor(hue),
+		s: floor(saturation * 100),
+		l: floor(luminance * 100),
 	}
 }
 
@@ -186,11 +190,7 @@ export function parseToHex(colorstring: string): string {
 		case hslMatcher.test(colorstring): {
 			const _values = colorstring.match(hslMatcher)
 			if (_values && _values.length) {
-				return hslToHex(
-					parseInt(_values[1], 10),
-					parseInt(_values[2], 10),
-					parseInt(_values[3], 10),
-				)
+				return hslToHex(toInt(_values[1]), toInt(_values[2]), toInt(_values[3]))
 			} else {
 				throw new Error('Invalid HSL String')
 			}
