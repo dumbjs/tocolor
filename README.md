@@ -1,10 +1,10 @@
-# tocolor
-
-Tiny color conversion library
+<p align="center">
+  <img src="images/tocolor.png" height="64">
+<p align="center">Tiny color conversion library</p>
 
 ## About
 
-A very small library built for general color conversion. It does one thing and does it properly.
+A very small library built for general color conversion. It only tries to do one thing and do it properly.
 
 ## Features
 
