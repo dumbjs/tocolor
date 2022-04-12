@@ -11,6 +11,7 @@ specifiers:
   rollup: ^2.56.3
   shx: ^0.3.4
   sizesnap: ^0.1.0
+  tsm: ^2.2.1
   tsup: ^5.11.13
   typescript: ^4.5.5
   uvu: ^0.5.1
@@ -26,6 +27,7 @@ devDependencies:
   rollup: 2.70.1
   shx: 0.3.4
   sizesnap: 0.1.1
+  tsm: 2.2.1
   tsup: 5.12.4_typescript@4.6.3
   typescript: 4.6.3
   uvu: 0.5.3
@@ -1065,6 +1067,14 @@ packages:
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+    dev: true
+
+  /tsm/2.2.1:
+    resolution: {integrity: sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.14.34
     dev: true
 
   /tsup/5.12.4_typescript@4.6.3:
