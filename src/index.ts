@@ -4,7 +4,7 @@ const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
 
 // minfiable aliases for reused functions
-const toInt = x => parseInt(x, 10)
+const toInt = (x: string) => parseInt(x, 10)
 const floor = Math.floor
 
 interface RGB {

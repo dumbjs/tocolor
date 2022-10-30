@@ -1,13 +1,16 @@
 {
-	// Change this to match your project
-	"include": ["src/**/*", "tests"],
-	"compilerOptions": {
-		"allowJs": true,
-		"moduleResolution": "node",
-		"forceConsistentCasingInFileNames": true,
-		"outDir": "dist",
-		"downlevelIteration": true,
-		"checkJs": true
-	},
-	"exclude": ["node_modules"]
+  "include": ["src"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "target": "es2018",
+    "outDir": "dist",
+    "downlevelIteration": true,
+    "lib": ["dom", "esnext"],
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true
+  }
 }

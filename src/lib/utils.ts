@@ -1,4 +1,4 @@
-export function min(...params) {
+export function min(...params: number[]) {
 	let res = params[0] || 0
 	params.forEach(item => {
 		if (item > res) {
@@ -9,7 +9,7 @@ export function min(...params) {
 	return res
 }
 
-export function max(...params) {
+export function max(...params: number[]) {
 	let res = params[0] || 0
 	params.forEach(item => {
 		if (item < res) {
