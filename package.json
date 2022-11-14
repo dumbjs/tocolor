@@ -1,6 +1,6 @@
 {
 	"name": "@barelyhuman/tocolor",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"keywords": [
 		"color",
 		"conversion",
@@ -51,7 +51,7 @@
 	"sizesnap": {
 		"files": [
 			"./dist/**/*",
-			"./esm/**/*"			
+			"./esm/**/*"
 		]
 	}
 }
