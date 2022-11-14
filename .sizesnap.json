@@ -5,29 +5,29 @@
     "gzip": "398B"
   },
   "dist/index.js": {
-    "size": "5.972KB",
+    "size": "5.956KB",
     "brotli": "1.436KB",
-    "gzip": "1.618KB"
+    "gzip": "1.616KB"
   },
   "dist/index.js.map": {
-    "size": "6.088KB",
-    "brotli": "1.013KB",
-    "gzip": "1.101KB"
+    "size": "6.098KB",
+    "brotli": "1.001KB",
+    "gzip": "1.089KB"
   },
   "dist/lib/utils.d.ts": {
-    "size": "175B",
-    "brotli": "81B",
-    "gzip": "108B"
+    "size": "59B",
+    "brotli": "55B",
+    "gzip": "72B"
   },
   "dist/lib/utils.js": {
-    "size": "970B",
-    "brotli": "331B",
-    "gzip": "396B"
+    "size": "530B",
+    "brotli": "235B",
+    "gzip": "297B"
   },
   "dist/lib/utils.js.map": {
-    "size": "1.101KB",
-    "brotli": "301B",
-    "gzip": "329B"
+    "size": "579B",
+    "brotli": "229B",
+    "gzip": "258B"
   },
   "esm/index.d.ts": {
     "size": "998B",
@@ -36,27 +36,27 @@
   },
   "esm/index.js": {
     "size": "5.502KB",
-    "brotli": "1.319KB",
-    "gzip": "1.482KB"
+    "brotli": "1.322KB",
+    "gzip": "1.476KB"
   },
   "esm/index.js.map": {
     "size": "6.043KB",
-    "brotli": "973B",
-    "gzip": "1.048KB"
+    "brotli": "977B",
+    "gzip": "1.047KB"
   },
   "esm/lib/utils.d.ts": {
-    "size": "175B",
-    "brotli": "81B",
-    "gzip": "108B"
+    "size": "59B",
+    "brotli": "55B",
+    "gzip": "72B"
   },
   "esm/lib/utils.js": {
-    "size": "780B",
-    "brotli": "263B",
-    "gzip": "309B"
+    "size": "392B",
+    "brotli": "179B",
+    "gzip": "229B"
   },
   "esm/lib/utils.js.map": {
-    "size": "1.077KB",
-    "brotli": "299B",
-    "gzip": "317B"
+    "size": "569B",
+    "brotli": "222B",
+    "gzip": "250B"
   }
 }

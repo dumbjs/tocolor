@@ -1,4 +1,4 @@
-import {max, min, normalizeHex} from './lib/utils'
+import { normalizeHex} from './lib/utils'
 
 const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
@@ -93,8 +93,8 @@ export function rgbToHSL(r: number, g: number, b: number): HSL {
 	const pointR = r / 255
 	const pointG = g / 255
 	const pointB = b / 255
-	const chromaMin = min(pointR, pointG, pointB)
-	const chromaMax = max(pointR, pointG, pointB)
+	const chromaMin = Math.min(pointR, pointG, pointB)
+	const chromaMax = Math.max(pointR, pointG, pointB)
 	const delta = chromaMax - chromaMin
 	const luminance = (chromaMax + chromaMin) / 2
 

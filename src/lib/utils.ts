@@ -1,25 +1,3 @@
-export function min(...params: number[]) {
-	let res = params[0] || 0
-	params.forEach(item => {
-		if (item > res) {
-			return
-		}
-		res = item
-	})
-	return res
-}
-
-export function max(...params: number[]) {
-	let res = params[0] || 0
-	params.forEach(item => {
-		if (item < res) {
-			return
-		}
-		res = item
-	})
-	return res
-}
-
 export function normalizeHex(hex: string): string {
 	let _hex = hex
 	const removedHash = String(hex).trim().replace(/^#/, '')
