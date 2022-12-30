@@ -11,6 +11,7 @@ A very small library built for general color conversion. It only tries to do one
 - 🌳 Tree shakable
 - 🌟 ESM Support
 - 🦍 backed by tests
+- Supports conversions between RGB, HSL, LAB, HEX, XYZ, LAB
 
 ## Installation
 
