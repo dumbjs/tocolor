@@ -19,15 +19,13 @@
 	"author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
 	"exports": {
 		".": {
-			"import": "./index.mjs",
-			"require": "./index.js",
-			"types": "./index.d.ts"
+			"import": "./esm/index.js",
+			"require": "./dist/index.js"
 		},
 		"./package.json": "./package.json"
 	},
 	"main": "./dist/index.js",
 	"module": "./esm/index.js",
-	"types": "./index.d.ts",
 	"scripts": {
 		"build": "npm run build:cjs;npm run build:esm",
 		"build:cjs": "tsc --module commonjs --outDir dist",

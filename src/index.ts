@@ -1,4 +1,4 @@
-import { normalizeHex} from './lib/utils'
+import {normalizeHex} from './lib/utils'
 
 const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
@@ -6,6 +6,12 @@ const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
 // minfiable aliases for reused functions
 const toInt = (x: string) => parseInt(x, 10)
 const floor = Math.floor
+
+interface XYZ {
+	x: number
+	y: number
+	z: number
+}
 
 interface RGB {
 	r: number
@@ -164,6 +170,66 @@ export function hexToInt(hex: string, index: number): number {
 export function hexToHSL(hex: string): HSL {
 	const {r, g, b} = hexToRGB(hex)
 	return rgbToHSL(r, g, b)
+}
+
+/**
+ * Convert a (0-255) Web RGB to XYZ standards
+ * @param r 0-255
+ * @param g 0-255
+ * @param b 0-255
+ * @returns
+ */
+export function rgbToXYZ(r: number, g: number, b: number): XYZ {
+	const rgbInBits = {r: r / 255, g: g / 255, b: b / 255}
+
+	const linearRGB = {
+		r: 0,
+		g: 0,
+		b: 0,
+	}
+
+	Object.keys(linearRGB).forEach(k => {
+		if (rgbInBits[k] <= 0.04045) {
+			linearRGB[k] = rgbInBits[k] / 12.92
+		} else {
+			linearRGB[k] = Math.pow((rgbInBits[k] + 0.055) / 1.055, 2.4)
+		}
+
+		linearRGB[k] = Number(linearRGB[k].toFixed(8))
+	})
+
+	/*
+	 the standard SRGB' to CIE-XYZ is represented here as an array of
+	 rows of each matrix and not columns, so the further calculations
+	 are done keeping that in mind
+	 */
+	const transformerMatrix = [
+		[0.4124564, 0.3575761, 0.1804375],
+		[0.2126729, 0.7151522, 0.072175],
+		[0.0193339, 0.119192, 0.9503041],
+	]
+
+	const RGBMatrix = [[linearRGB.r], [linearRGB.g], [linearRGB.b]]
+
+	const values = []
+
+	transformerMatrix.forEach(transformerRow => {
+		let value = 0
+		RGBMatrix.forEach((colorRow, colorIndex) => {
+			colorRow.forEach(color => {
+				value += color * transformerRow[colorIndex]
+			})
+		})
+		values.push(Number(value.toFixed(4)))
+	})
+
+	let [x, y, z] = values
+
+	return {
+		x,
+		y,
+		z,
+	}
 }
 
 /**

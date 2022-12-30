@@ -1,6 +1,6 @@
-const {test} = require('uvu')
-const assert = require('uvu/assert')
-const {
+import {test} from 'uvu'
+import assert from 'uvu/assert'
+import {
 	hexToRGB,
 	hexToHSL,
 	hslToHex,
@@ -8,8 +8,8 @@ const {
 	rgbToHSL,
 	rgbToHex,
 	parseToHex,
-} = require('../src')
-const {normalizeHex} = require('../src/lib/utils')
+} from '../src'
+import {normalizeHex} from '../src/lib/utils'
 
 const colors = {
 	black3: '#000',

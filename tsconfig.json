@@ -1,16 +1,16 @@
 {
-  "include": ["src"],
-  "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "target": "es2018",
-    "outDir": "dist",
-    "downlevelIteration": true,
-    "lib": ["dom", "esnext"],
-    "declaration": true,
-    "sourceMap": true,
-    "esModuleInterop": true
-  }
+	"include": ["src"],
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"moduleResolution": "node",
+		"forceConsistentCasingInFileNames": true,
+		"target": "es2018",
+		"outDir": "dist",
+		"downlevelIteration": true,
+		"lib": ["dom", "esnext"],
+		"declaration": true,
+		"sourceMap": true,
+		"esModuleInterop": true
+	}
 }
