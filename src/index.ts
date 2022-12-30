@@ -13,6 +13,12 @@ interface XYZ {
 	z: number
 }
 
+interface LAB {
+	l: number
+	a: number
+	b: number
+}
+
 interface RGB {
 	r: number
 	g: number
@@ -173,6 +179,45 @@ export function hexToHSL(hex: string): HSL {
 }
 
 /**
+ * @description parse a given string of value hex / rgb / hsl format
+ * into it's normalized hex variant
+ */
+export function parseToHex(colorstring: string): string {
+	const rgbMatcher = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/
+	const hslMatcher = /^hsl\(\s*(\d+)\s*,\s*(\d+)%*\s*,\s*(\d+)%*\s*\)$/
+
+	switch (true) {
+		case rgbMatcher.test(colorstring): {
+			const _values = colorstring.match(rgbMatcher)
+			if (_values && _values.length) {
+				return rgbToHex(
+					parseInt(_values[1], 10),
+					parseInt(_values[2], 10),
+					parseInt(_values[3], 10),
+				)
+			} else {
+				throw new Error('Invalid RGB String')
+			}
+		}
+		case hslMatcher.test(colorstring): {
+			const _values = colorstring.match(hslMatcher)
+			if (_values && _values.length) {
+				return hslToHex(toInt(_values[1]), toInt(_values[2]), toInt(_values[3]))
+			} else {
+				throw new Error('Invalid HSL String')
+			}
+		}
+		default: {
+			const _value = normalizeHex(colorstring)
+			if (_value.length > 6) {
+				throw new Error('Invalid Hex String')
+			}
+			return _value
+		}
+	}
+}
+
+/**
  * Convert a (0-255) Web RGB to XYZ standards
  * @param r 0-255
  * @param g 0-255
@@ -180,7 +225,7 @@ export function hexToHSL(hex: string): HSL {
  * @returns
  */
 export function rgbToXYZ(r: number, g: number, b: number): XYZ {
-	const rgbInBits = {r: r / 255, g: g / 255, b: b / 255}
+	const rgbInBits = {r: r / 255.0, g: g / 255.0, b: b / 255}
 
 	const linearRGB = {
 		r: 0,
@@ -232,41 +277,37 @@ export function rgbToXYZ(r: number, g: number, b: number): XYZ {
 	}
 }
 
-/**
- * @description parse a given string of value hex / rgb / hsl format
- * into it's normalized hex variant
- */
-export function parseToHex(colorstring: string): string {
-	const rgbMatcher = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/
-	const hslMatcher = /^hsl\(\s*(\d+)\s*,\s*(\d+)%*\s*,\s*(\d+)%*\s*\)$/
+export function xyzToLAB(x: number, y: number, z: number): LAB {
+	const whiteRef = rgbToXYZ(255, 255, 255)
 
-	switch (true) {
-		case rgbMatcher.test(colorstring): {
-			const _values = colorstring.match(rgbMatcher)
-			if (_values && _values.length) {
-				return rgbToHex(
-					parseInt(_values[1], 10),
-					parseInt(_values[2], 10),
-					parseInt(_values[3], 10),
-				)
-			} else {
-				throw new Error('Invalid RGB String')
-			}
-		}
-		case hslMatcher.test(colorstring): {
-			const _values = colorstring.match(hslMatcher)
-			if (_values && _values.length) {
-				return hslToHex(toInt(_values[1]), toInt(_values[2]), toInt(_values[3]))
-			} else {
-				throw new Error('Invalid HSL String')
-			}
-		}
-		default: {
-			const _value = normalizeHex(colorstring)
-			if (_value.length > 6) {
-				throw new Error('Invalid Hex String')
-			}
-			return _value
-		}
+	const xR = x / whiteRef.x
+	const yR = y / whiteRef.y
+	const zR = z / whiteRef.z
+
+	const normalizedX = labXYZNormalizer(xR)
+	const normalizedY = labXYZNormalizer(yR)
+	const normalizedZ = labXYZNormalizer(zR)
+
+	return {
+		l: 116 * normalizedY - 16,
+		a: 500 * (normalizedX - normalizedY),
+		b: 200 * (normalizedY - normalizedZ),
 	}
+}
+
+function labXYZNormalizer(colorPoint: number) {
+	const CIEEpsilon = 0.008856
+	const CIEKappa = 903.3
+
+	if (colorPoint > CIEEpsilon) {
+		return Math.cbrt(colorPoint)
+	}
+
+	return (CIEKappa * colorPoint + 16) / 116
+}
+
+export function rgbToLAB(r: number, g: number, b: number): LAB {
+	const xyz = rgbToXYZ(r, g, b)
+	const lab = xyzToLAB(xyz.x, xyz.y, xyz.z)
+	return lab
 }
