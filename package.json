@@ -17,19 +17,16 @@
 	"repository": "git@github.com:barelyhuman/tocolor.git",
 	"license": "MIT",
 	"author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
-	"exports": {
-		".": {
-			"import": "./esm/index.js",
-			"require": "./dist/index.js"
-		},
-		"./package.json": "./package.json"
-	},
 	"main": "./dist/index.js",
 	"module": "./esm/index.js",
 	"scripts": {
-		"build": "npm run build:cjs;npm run build:esm",
+		"prebuild": "rimraf dist esm",
+		"build": "concurrently 'npm:build:*'",
 		"build:cjs": "tsc --module commonjs --outDir dist",
 		"build:esm": "tsc --module esnext --outDir esm",
+		"postbuild": "concurrently 'npm:minify:*'",
+		"minify:cjs": "esbuild dist/index.js --minify --bundle --outfile=dist/index.min.js",
+		"minify:esm": "esbuild esm/index.js --minify --bundle --outfile=esm/index.min.js",
 		"fix": "prettier --write .",
 		"size": "sizesnap",
 		"test": "uvu -r tsm tests"
@@ -37,7 +34,10 @@
 	"prettier": "@barelyhuman/prettier-config",
 	"devDependencies": {
 		"@barelyhuman/prettier-config": "^0.1.0",
+		"concurrently": "^7.6.0",
+		"esbuild": "^0.16.12",
 		"prettier": "^2.5.1",
+		"rimraf": "^3.0.2",
 		"sizesnap": "^0.1.0",
 		"tsm": "^2.2.1",
 		"typescript": "^4.5.5",

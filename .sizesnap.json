@@ -14,6 +14,11 @@
     "brotli": "1.261KB",
     "gzip": "1.371KB"
   },
+  "dist/index.min.js": {
+    "size": "2.921KB",
+    "brotli": "1.145KB",
+    "gzip": "1.28KB"
+  },
   "dist/lib/utils.d.ts": {
     "size": "59B",
     "brotli": "55B",
@@ -43,6 +48,11 @@
     "size": "7.557KB",
     "brotli": "1.226KB",
     "gzip": "1.32KB"
+  },
+  "esm/index.min.js": {
+    "size": "3.333KB",
+    "brotli": "1.171KB",
+    "gzip": "1.312KB"
   },
   "esm/lib/utils.d.ts": {
     "size": "59B",
