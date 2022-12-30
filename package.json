@@ -29,13 +29,15 @@
 		"minify:esm": "esbuild esm/index.js --minify --bundle --outfile=esm/index.min.js",
 		"fix": "prettier --write .",
 		"size": "sizesnap",
-		"test": "uvu -r tsm tests"
+		"test": "uvu -r tsm tests",
+		"release": "np"
 	},
 	"prettier": "@barelyhuman/prettier-config",
 	"devDependencies": {
 		"@barelyhuman/prettier-config": "^0.1.0",
 		"concurrently": "^7.6.0",
 		"esbuild": "^0.16.12",
+		"np": "^7.6.3",
 		"prettier": "^2.5.1",
 		"rimraf": "^3.0.2",
 		"sizesnap": "^0.1.0",
