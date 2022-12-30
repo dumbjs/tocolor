@@ -30,7 +30,7 @@
 		"fix": "prettier --write .",
 		"size": "sizesnap",
 		"test": "uvu -r tsm tests",
-		"release": "np"
+		"release": "np --branch dev"
 	},
 	"prettier": "@barelyhuman/prettier-config",
 	"devDependencies": {
