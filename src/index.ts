@@ -1,7 +1,34 @@
-import {normalizeHex} from './lib/utils'
+import {normalizeHex} from './lib/color'
+import {matrix3x3x1Multiplication} from './lib/math'
 
 const padHex = d => (parseInt(d, 16) < 16 ? `0${d}` : d)
 const toRGBIndex = (val, lMultiplier) => Math.ceil((val + lMultiplier) * 255)
+
+const CIEEpsilon = 216 / 24389
+const CIEKappa = 24389 / 27
+const CIEDelta = 6 / 29
+
+/*
+	 the standard SRGB' to CIE-XYZ is represented here as an array of
+	 rows of each matrix and not columns, so the further calculations
+	 are done keeping that in mind
+	 */
+const transformerMatrix = [
+	[0.4124108464885388, 0.3575845678529519, 0.18045380393360833],
+	[0.21264934272065283, 0.7151691357059038, 0.07218152157344333],
+	[0.019331758429150258, 0.11919485595098397, 0.9503900340503373],
+]
+
+/*
+	Statically calculate the inverse instead of dynamically doing it 
+	since the chances of this changing is close to none as the entire 
+	library works on the d65 angle for color positioning
+*/
+const transformerMatrixInverse = [
+	[3.240812398895283, -1.5373084456298136, -0.4985865229069666],
+	[-0.9692430170086407, 1.8759663029085742, 0.04155503085668564],
+	[0.055638398436112804, -0.20400746093241362, 1.0571295702861434],
+]
 
 // minfiable aliases for reused functions
 const toInt = (x: string) => parseInt(x, 10)
@@ -243,30 +270,9 @@ export function rgbToXYZ(r: number, g: number, b: number): XYZ {
 		linearRGB[k] = Number(linearRGB[k].toFixed(8))
 	})
 
-	/*
-	 the standard SRGB' to CIE-XYZ is represented here as an array of
-	 rows of each matrix and not columns, so the further calculations
-	 are done keeping that in mind
-	 */
-	const transformerMatrix = [
-		[0.4124564, 0.3575761, 0.1804375],
-		[0.2126729, 0.7151522, 0.072175],
-		[0.0193339, 0.119192, 0.9503041],
-	]
-
 	const RGBMatrix = [[linearRGB.r], [linearRGB.g], [linearRGB.b]]
 
-	const values = []
-
-	transformerMatrix.forEach(transformerRow => {
-		let value = 0
-		RGBMatrix.forEach((colorRow, colorIndex) => {
-			colorRow.forEach(color => {
-				value += color * transformerRow[colorIndex]
-			})
-		})
-		values.push(Number(value.toFixed(4)))
-	})
+	const values = matrix3x3x1Multiplication(transformerMatrix, RGBMatrix)
 
 	let [x, y, z] = values
 
@@ -284,30 +290,86 @@ export function xyzToLAB(x: number, y: number, z: number): LAB {
 	const yR = y / whiteRef.y
 	const zR = z / whiteRef.z
 
-	const normalizedX = labXYZNormalizer(xR)
-	const normalizedY = labXYZNormalizer(yR)
-	const normalizedZ = labXYZNormalizer(zR)
+	const computedX = xyzToLabDeltaNormalizer(xR)
+	const computedY = xyzToLabDeltaNormalizer(yR)
+	const computedZ = xyzToLabDeltaNormalizer(zR)
 
 	return {
-		l: 116 * normalizedY - 16,
-		a: 500 * (normalizedX - normalizedY),
-		b: 200 * (normalizedY - normalizedZ),
+		l: 116 * computedY - 16,
+		a: 500 * (computedX - computedY),
+		b: 200 * (computedY - computedZ),
 	}
 }
 
-function labXYZNormalizer(colorPoint: number) {
-	const CIEEpsilon = 0.008856
-	const CIEKappa = 903.3
-
-	if (colorPoint > CIEEpsilon) {
-		return Math.cbrt(colorPoint)
-	}
-
-	return (CIEKappa * colorPoint + 16) / 116
+function xyzToLabDeltaNormalizer(colorPoint: number) {
+	return colorPoint > CIEEpsilon
+		? Math.cbrt(colorPoint)
+		: (CIEKappa * colorPoint + 16) / 116
 }
 
 export function rgbToLAB(r: number, g: number, b: number): LAB {
 	const xyz = rgbToXYZ(r, g, b)
 	const lab = xyzToLAB(xyz.x, xyz.y, xyz.z)
 	return lab
+}
+
+export function labToXYZ(l: number, a: number, b: number): XYZ {
+	const whiteRef = rgbToXYZ(255, 255, 255)
+
+	const commonYPoint = (l + 16) / 116
+	const xPoint = commonYPoint + a / 500
+	const zPoint = commonYPoint - b / 200
+
+	let xR = labToXYZDeltaNormalizer(xPoint)
+	let yR = labToXYZDeltaNormalizer(commonYPoint)
+	let zR = labToXYZDeltaNormalizer(zPoint)
+
+	return {
+		x: xR * whiteRef.x,
+		y: yR * whiteRef.y,
+		z: zR * whiteRef.z,
+	}
+}
+
+function labToXYZDeltaNormalizer(colorPoint: number): number {
+	if (colorPoint > CIEDelta) {
+		return Math.pow(colorPoint, 3)
+	}
+	return 3 * Math.pow(CIEDelta, 2) * (colorPoint - 4 / 29)
+}
+
+export function xyzToRGB(x: number, y: number, z: number): RGB {
+	let linearRGB = {}
+
+	// const values = []
+	const XYZMatrix = [[x], [y], [z]]
+
+	const values = matrix3x3x1Multiplication(transformerMatrixInverse, XYZMatrix)
+
+	let [r, g, b] = values
+
+	linearRGB = {
+		r,
+		g,
+		b,
+	}
+
+	const RGB = {r: 0, g: 0, b: 0}
+
+	Object.keys(linearRGB).forEach(k => {
+		if (linearRGB[k] <= 0.00313066844250060782371) {
+			RGB[k] = linearRGB[k] * 12.92
+		} else {
+			RGB[k] = 1.055 * Math.pow(linearRGB[k], 1 / 2.4) - 0.055
+		}
+
+		RGB[k] = Math.round(RGB[k] * 255)
+	})
+
+	return RGB
+}
+
+export function labToRGB(l: number, a: number, b: number): RGB {
+	const xyz = labToXYZ(l, a, b)
+	return xyzToRGB(xyz.x, xyz.y, xyz.z)
 }

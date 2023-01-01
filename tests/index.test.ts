@@ -9,7 +9,7 @@ import {
 	rgbToHex,
 	parseToHex,
 } from '../src'
-import {normalizeHex} from '../src/lib/utils'
+import {normalizeHex} from '../src/lib/color'
 
 const colors = {
 	black3: '#000',

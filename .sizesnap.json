@@ -1,72 +1,102 @@
 {
   "dist/index.d.ts": {
-    "size": "1.46KB",
-    "brotli": "412B",
-    "gzip": "510B"
+    "size": "1.676KB",
+    "brotli": "461B",
+    "gzip": "535B"
   },
   "dist/index.js": {
-    "size": "8.285KB",
-    "brotli": "2.138KB",
-    "gzip": "2.426KB"
+    "size": "10.218KB",
+    "brotli": "2.661KB",
+    "gzip": "3.055KB"
   },
   "dist/index.js.map": {
-    "size": "8.731KB",
-    "brotli": "1.401KB",
-    "gzip": "1.528KB"
+    "size": "10.643KB",
+    "brotli": "1.597KB",
+    "gzip": "1.78KB"
   },
   "dist/index.min.js": {
-    "size": "3.103KB",
-    "brotli": "1.33KB",
-    "gzip": "1.494KB"
+    "size": "4.153KB",
+    "brotli": "1.72KB",
+    "gzip": "1.967KB"
   },
-  "dist/lib/utils.d.ts": {
+  "dist/lib/color.d.ts": {
     "size": "59B",
     "brotli": "55B",
     "gzip": "72B"
   },
-  "dist/lib/utils.js": {
+  "dist/lib/color.js": {
     "size": "530B",
-    "brotli": "235B",
+    "brotli": "232B",
     "gzip": "297B"
   },
-  "dist/lib/utils.js.map": {
+  "dist/lib/color.js.map": {
     "size": "579B",
-    "brotli": "229B",
+    "brotli": "234B",
     "gzip": "258B"
   },
+  "dist/lib/math.d.ts": {
+    "size": "80B",
+    "brotli": "59B",
+    "gzip": "86B"
+  },
+  "dist/lib/math.js": {
+    "size": "574B",
+    "brotli": "241B",
+    "gzip": "295B"
+  },
+  "dist/lib/math.js.map": {
+    "size": "542B",
+    "brotli": "242B",
+    "gzip": "268B"
+  },
   "esm/index.d.ts": {
-    "size": "1.46KB",
-    "brotli": "412B",
-    "gzip": "510B"
+    "size": "1.676KB",
+    "brotli": "461B",
+    "gzip": "535B"
   },
   "esm/index.js": {
-    "size": "7.708KB",
-    "brotli": "1.998KB",
-    "gzip": "2.262KB"
+    "size": "9.512KB",
+    "brotli": "2.466KB",
+    "gzip": "2.859KB"
   },
   "esm/index.js.map": {
-    "size": "8.651KB",
-    "brotli": "1.356KB",
-    "gzip": "1.464KB"
+    "size": "10.558KB",
+    "brotli": "1.544KB",
+    "gzip": "1.705KB"
   },
   "esm/index.min.js": {
-    "size": "2.513KB",
-    "brotli": "1.107KB",
-    "gzip": "1.244KB"
+    "size": "3.28KB",
+    "brotli": "1.434KB",
+    "gzip": "1.63KB"
   },
-  "esm/lib/utils.d.ts": {
+  "esm/lib/color.d.ts": {
     "size": "59B",
     "brotli": "55B",
     "gzip": "72B"
   },
-  "esm/lib/utils.js": {
+  "esm/lib/color.js": {
     "size": "392B",
-    "brotli": "179B",
-    "gzip": "229B"
+    "brotli": "177B",
+    "gzip": "227B"
   },
-  "esm/lib/utils.js.map": {
+  "esm/lib/color.js.map": {
     "size": "569B",
-    "brotli": "222B",
+    "brotli": "239B",
     "gzip": "250B"
+  },
+  "esm/lib/math.d.ts": {
+    "size": "80B",
+    "brotli": "59B",
+    "gzip": "86B"
+  },
+  "esm/lib/math.js": {
+    "size": "397B",
+    "brotli": "191B",
+    "gzip": "225B"
+  },
+  "esm/lib/math.js.map": {
+    "size": "532B",
+    "brotli": "228B",
+    "gzip": "259B"
   }
 }
