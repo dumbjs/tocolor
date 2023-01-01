@@ -11,7 +11,9 @@ A very small library built for general color conversion. It only tries to do one
 - 🌳 Tree shakable
 - 🌟 ESM Support
 - 🦍 backed by tests
-- Supports conversions between RGB, HSL, LAB, HEX, XYZ, LAB
+- Supports conversions among RGB, HSL, L\*a\*b\*, HEX, XYZ
+
+> **Note**: When dealing with XYZ and L\*a\*b\*, the library uses the reference white point based on D65 and doesn't support changing the white point, right now
 
 ## Installation
 
