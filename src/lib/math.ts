@@ -7,7 +7,9 @@ export function matrix3x3x1Multiplication(mat1, mat2) {
 				value += rowValue * mat1Row[mat2ind]
 			})
 		})
-		newMatrix.push(value)
+		newMatrix.push(
+			Number(value.toFixed(4))
+		)
 	})
 	return newMatrix
 }
