@@ -34,25 +34,25 @@ const transformerMatrixInverse = [
 const toInt = (x: string) => parseInt(x, 10)
 const floor = Math.floor
 
-interface XYZ {
+export interface XYZ {
 	x: number
 	y: number
 	z: number
 }
 
-interface LAB {
+export interface LAB {
 	l: number
 	a: number
 	b: number
 }
 
-interface RGB {
+export interface RGB {
 	r: number
 	g: number
 	b: number
 }
 
-interface HSL {
+export interface HSL {
 	h: number
 	s: number
 	l: number
