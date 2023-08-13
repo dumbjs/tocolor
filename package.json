@@ -21,6 +21,11 @@
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.js",
 			"default": "./dist/index.js"
+		},
+		"./compose": {
+			"import": "./dist/compose.mjs",
+			"require": "./dist/compose.js",
+			"default": "./dist/compose.js"
 		}
 	},
 	"scripts": {
@@ -35,7 +40,7 @@
 		"@barelyhuman/prettier-config": "^0.1.0",
 		"prettier": "^2.5.1",
 		"rimraf": "^3.0.2",
-		"sizesnap": "^0.1.0",
+		"sizesnap": "^0.2.1",
 		"tsm": "^2.2.1",
 		"tsup": "^6.7.0",
 		"typescript": "^4.5.5",
@@ -46,8 +51,7 @@
 	},
 	"sizesnap": {
 		"files": [
-			"./dist/**/*",
-			"./esm/**/*"
+			"./dist/**/*"
 		]
 	}
 }

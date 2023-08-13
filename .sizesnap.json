@@ -1,102 +1,37 @@
 {
-	"dist/index.d.ts": {
-		"size": "1.676KB",
-		"brotli": "461B",
-		"gzip": "535B"
-	},
-	"dist/index.js": {
-		"size": "10.218KB",
-		"brotli": "2.661KB",
-		"gzip": "3.055KB"
-	},
-	"dist/index.js.map": {
-		"size": "10.643KB",
-		"brotli": "1.597KB",
-		"gzip": "1.78KB"
-	},
-	"dist/index.min.js": {
-		"size": "4.153KB",
-		"brotli": "1.72KB",
-		"gzip": "1.967KB"
-	},
-	"dist/lib/color.d.ts": {
-		"size": "59B",
-		"brotli": "55B",
-		"gzip": "72B"
-	},
-	"dist/lib/color.js": {
-		"size": "530B",
-		"brotli": "232B",
-		"gzip": "297B"
-	},
-	"dist/lib/color.js.map": {
-		"size": "579B",
-		"brotli": "234B",
-		"gzip": "258B"
-	},
-	"dist/lib/math.d.ts": {
-		"size": "80B",
-		"brotli": "59B",
-		"gzip": "86B"
-	},
-	"dist/lib/math.js": {
-		"size": "574B",
-		"brotli": "241B",
-		"gzip": "295B"
-	},
-	"dist/lib/math.js.map": {
-		"size": "542B",
-		"brotli": "242B",
-		"gzip": "268B"
-	},
-	"esm/index.d.ts": {
-		"size": "1.676KB",
-		"brotli": "461B",
-		"gzip": "535B"
-	},
-	"esm/index.js": {
-		"size": "9.512KB",
-		"brotli": "2.466KB",
-		"gzip": "2.859KB"
-	},
-	"esm/index.js.map": {
-		"size": "10.558KB",
-		"brotli": "1.544KB",
-		"gzip": "1.705KB"
-	},
-	"esm/index.min.js": {
-		"size": "3.28KB",
-		"brotli": "1.434KB",
-		"gzip": "1.63KB"
-	},
-	"esm/lib/color.d.ts": {
-		"size": "59B",
-		"brotli": "55B",
-		"gzip": "72B"
-	},
-	"esm/lib/color.js": {
-		"size": "392B",
-		"brotli": "177B",
-		"gzip": "227B"
-	},
-	"esm/lib/color.js.map": {
-		"size": "569B",
-		"brotli": "239B",
-		"gzip": "250B"
-	},
-	"esm/lib/math.d.ts": {
-		"size": "80B",
-		"brotli": "59B",
-		"gzip": "86B"
-	},
-	"esm/lib/math.js": {
-		"size": "397B",
-		"brotli": "191B",
-		"gzip": "225B"
-	},
-	"esm/lib/math.js.map": {
-		"size": "532B",
-		"brotli": "228B",
-		"gzip": "259B"
-	}
+  "dist/chunk-MGU2KWPZ.mjs": {
+    "size": "8.452KB",
+    "brotli": "2.262KB",
+    "gzip": "2.568KB"
+  },
+  "dist/compose.d.ts": {
+    "size": "674B",
+    "brotli": "219B",
+    "gzip": "242B"
+  },
+  "dist/compose.js": {
+    "size": "9.421KB",
+    "brotli": "2.551KB",
+    "gzip": "2.912KB"
+  },
+  "dist/compose.mjs": {
+    "size": "1.209KB",
+    "brotli": "282B",
+    "gzip": "340B"
+  },
+  "dist/index.d.ts": {
+    "size": "1.741KB",
+    "brotli": "507B",
+    "gzip": "584B"
+  },
+  "dist/index.js": {
+    "size": "9.822KB",
+    "brotli": "2.68KB",
+    "gzip": "3.033KB"
+  },
+  "dist/index.mjs": {
+    "size": "390B",
+    "brotli": "130B",
+    "gzip": "141B"
+  }
 }
