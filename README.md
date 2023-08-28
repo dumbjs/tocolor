@@ -2,10 +2,6 @@
   <img src="images/tocolor.png" height="64">
 <p align="center">Tiny color conversion library</p>
 
-## About
-
-A very small library built for general color conversion. It only tries to do one thing and do it properly.
-
 ## Highlights
 
 - 🌳 Tree shakable
