@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="images/tocolor.png" height="64">
-<p align="center">Tiny color conversion library</p>
+![tocolor](https://socialify.git.ci/barelyhuman/tocolor/image?description=1&name=1&owner=1&pattern=Solid&theme=Dark)
 
 ## Highlights
 
