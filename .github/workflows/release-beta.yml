@@ -1,0 +1,32 @@
+name: release-beta
+
+on:
+  push:
+    tags:
+      - '*-beta.*'
+
+jobs:
+  publish_beta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm run test
+
+      - name: Compile
+        run: npm run build
+
+      - name: Publish
+        run: |
+          npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
