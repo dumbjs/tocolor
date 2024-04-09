@@ -35,7 +35,7 @@ function darker(percentage, hex) {
 
 ## API Reference
 
-[API](https://typeapi.barelyhuman.dev/package/@barelyhuman/tocolor@next)
+[API](https://typeapi.barelyhuman.dev/pkg/@barelyhuman/tocolor@next)
 
 ## Contributing
 
