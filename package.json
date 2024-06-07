@@ -1,54 +1,60 @@
 {
-	"name": "@barelyhuman/tocolor",
-	"version": "0.2.3",
-	"type": "commonjs",
-	"keywords": [
-		"color",
-		"conversion",
-		"rgb to hex",
-		"hex to rgb",
-		"hsl to rgb",
-		"tiny"
-	],
-	"files": [
-		"src",
-		"dist"
-	],
-	"repository": "git@github.com:barelyhuman/tocolor.git",
-	"license": "MIT",
-	"author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.im)",
-	"exports": {
-		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js",
-			"default": "./dist/index.js"
-		}
-	},
-	"scripts": {
-		"prebuild": "rimraf dist esm",
-		"build": "tsup",
-		"fix": "prettier --write .",
-		"size": "sizesnap",
-		"test": "uvu -r tsm tests"
-	},
-	"prettier": "@barelyhuman/prettier-config",
-	"devDependencies": {
-		"@barelyhuman/prettier-config": "^1.1.0",
-		"prettier": "^3.3.0",
-		"rimraf": "^5.0.7",
-		"sizesnap": "^0.2.1",
-		"tsm": "^2.3.0",
-		"tsup": "^8.1.0",
-		"typescript": "^5.4.5",
-		"uvu": "^0.5.6"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"sizesnap": {
-		"files": [
-			"./dist/**/*",
-			"./esm/**/*"
-		]
-	}
+  "name": "@barelyhuman/tocolor",
+  "version": "0.2.3",
+  "type": "commonjs",
+  "keywords": [
+    "color",
+    "conversion",
+    "rgb to hex",
+    "hex to rgb",
+    "hsl to rgb",
+    "tiny"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": "git@github.com:barelyhuman/tocolor.git",
+  "license": "MIT",
+  "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.is)",
+  "main": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": {
+        "require": "./dist/index.d.ts",
+        "import": "./dist/index.d.mts"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist esm",
+    "build": "tsup",
+    "fix": "prettier --write .",
+    "size": "sizesnap",
+    "test": "uvu -r tsm tests"
+  },
+  "prettier": "@barelyhuman/prettier-config",
+  "devDependencies": {
+    "@barelyhuman/prettier-config": "^1.1.0",
+    "prettier": "^3.3.0",
+    "rimraf": "^5.0.7",
+    "sizesnap": "^0.2.1",
+    "tsm": "^2.3.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5",
+    "uvu": "^0.5.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sizesnap": {
+    "files": [
+      "./dist/**/*",
+      "./esm/**/*"
+    ]
+  }
 }
