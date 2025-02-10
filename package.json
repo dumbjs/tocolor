@@ -40,7 +40,7 @@
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
     "@barelyhuman/prettier-config": "^2.0.2",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.0",
     "rimraf": "^6.0.1",
     "sizesnap": "^0.2.1",
     "tsm": "^2.3.0",
