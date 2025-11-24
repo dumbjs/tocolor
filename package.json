@@ -41,7 +41,7 @@
   "devDependencies": {
     "@barelyhuman/prettier-config": "^2.0.2",
     "prettier": "^3.6.2",
-    "rimraf": "^6.1.0",
+    "rimraf": "^6.1.2",
     "sizesnap": "^0.2.1",
     "tsm": "^2.3.0",
     "tsup": "^8.5.1",
