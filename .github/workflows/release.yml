@@ -5,6 +5,10 @@ on:
     tags-ignore:
       - '*-beta.*'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish_beta:
     runs-on: ubuntu-latest
@@ -26,7 +30,4 @@ jobs:
         run: npm run build
 
       - name: Publish
-        run: |
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
