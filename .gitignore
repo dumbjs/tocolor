@@ -155,3 +155,5 @@ dist
 
 /esm
 /browser
+
+/dist-tests

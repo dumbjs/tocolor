@@ -7,7 +7,9 @@
 - 🦍 backed by tests
 - Supports conversions among RGB, HSL, L\*a\*b\*, HEX, XYZ
 
-> **Note**: When dealing with XYZ and L\*a\*b\*, the library uses the reference white point based on D65 and doesn't support changing the white point, right now
+> **Note**: When dealing with XYZ and L\*a\*b\*, the library uses the reference
+> white point based on D65 and doesn't support changing the white point, right
+> now
 
 ## Installation
 
@@ -20,16 +22,16 @@
 ## Usage
 
 ```js
-import {hexToHSL, hslToHex} from '@barelyhuman/tocolor'
+import { hexToHSL, hslToHex } from '@barelyhuman/tocolor'
 
 function darker(percentage, hex) {
-	if (!percentage) {
-		return this
-	}
-	const {h, s, l} = hexToHSL(hex)
-	const _afterDarken = l - percentage
-	const value = hslToHex(h, s, _afterDarken)
-	return value
+  if (!percentage) {
+    return this
+  }
+  const { h, s, l } = hexToHSL(hex)
+  const _afterDarken = l - percentage
+  const value = hslToHex(h, s, _afterDarken)
+  return value
 }
 ```
 
@@ -41,7 +43,8 @@ function darker(percentage, hex) {
 
 Contributions are always welcome!
 
-Follow the general github flow of Fork => PR, make sure that you let the authors know about the issue you pick to avoid overlaps.
+Follow the general github flow of Fork => PR, make sure that you let the authors
+know about the issue you pick to avoid overlaps.
 
 ## Authors
 

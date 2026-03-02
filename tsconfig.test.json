@@ -1,16 +1,17 @@
 {
-  "include": ["src"],
+  "include": ["tests"],
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "target": "es6",
-    "outDir": "dist",
+    "module": "commonjs",
+    "outDir": "dist-tests",
     "downlevelIteration": true,
     "lib": ["dom", "esnext"],
-    "declaration": true,
-    "sourceMap": true,
+    "declaration": false,
+    "sourceMap": false,
     "esModuleInterop": true
   }
 }
