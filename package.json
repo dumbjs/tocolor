@@ -14,7 +14,10 @@
     "src",
     "dist"
   ],
-  "repository": "git@github.com:barelyhuman/tocolor.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dumbjs/tocolor.git"
+  },
   "license": "MIT",
   "author": "Reaper <ahoy@barelyhuman.dev> (https://reaper.is)",
   "main": "./dist/index.js",
