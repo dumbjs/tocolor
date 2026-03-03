@@ -32,7 +32,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist esm",
-    "build": "tsdown",
+    "build": "tsdown --config-loader unrun",
     "fix": "prettier --write .",
     "test": "tsc -p ./tsconfig.test.json && node --test --test-reporter=spec \"dist-tests/**/*.test.js\""
   },
