@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  publish_beta:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
