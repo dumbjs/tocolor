@@ -376,30 +376,30 @@ export function labToRGB(l: number, a: number, b: number): RGB {
 
 export const colorMutations = {
   /**
-  * @description Increase the lightness of a color using a percentage (1-100)
-  *
-  * internaly uses parseToHex
-  */
-  lighten: (color : string, percentage : number) => {
-    if (percentage === 0) return parseToHex(color);
+   * @description Increase the lightness of a color using a percentage (1-100)
+   *
+   * internaly uses parseToHex
+   */
+  lighten: (color: string, percentage: number) => {
+    if (percentage === 0) return parseToHex(color)
 
-    const hex = parseToHex(color);
-    const {h, s, l} = hexToHSL(hex);
-const newLightness = Math.min(100, l + (100 - l) * (percentage / 100));
-    return hslToHex(h, s, newLightness);
+    const hex = parseToHex(color)
+    const { h, s, l } = hexToHSL(hex)
+    const newLightness = Math.min(100, l + (100 - l) * (percentage / 100))
+    return hslToHex(h, s, newLightness)
   },
   /**
-  * @description Increase darkness of a color using a percentage (1-100)
-  *
-  * internaly uses parseToHex
-  */
+   * @description Increase darkness of a color using a percentage (1-100)
+   *
+   * internaly uses parseToHex
+   */
   darken: (color: string, percentage: number) => {
-    if (percentage === 0) return parseToHex(color);
+    if (percentage === 0) return parseToHex(color)
 
-    const hex = parseToHex(color);
-    const {h, s, l} = hexToHSL(hex);
-    const newLightness = Math.max(0, l - (l * (percentage / 100)));
+    const hex = parseToHex(color)
+    const { h, s, l } = hexToHSL(hex)
+    const newLightness = Math.max(0, l - l * (percentage / 100))
 
-    return hslToHex(h, s, newLightness);
-  }
-} as const;
+    return hslToHex(h, s, newLightness)
+  },
+} as const
