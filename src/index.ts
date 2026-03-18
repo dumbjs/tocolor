@@ -373,3 +373,33 @@ export function labToRGB(l: number, a: number, b: number): RGB {
   const xyz = labToXYZ(l, a, b)
   return xyzToRGB(xyz.x, xyz.y, xyz.z)
 }
+
+export const colorMutations = {
+  /**
+  * @description Increase the lightness of a color using a percentage (1-100)
+  *
+  * internaly uses parseToHex
+  */
+  lighten: (color : string, percentage : number) => {
+    if (percentage === 0) return parseToHex(color);
+
+    const hex = parseToHex(color);
+    const {h, s, l} = hexToHSL(hex);
+const newLightness = Math.min(100, l + (100 - l) * (percentage / 100));
+    return hslToHex(h, s, newLightness);
+  },
+  /**
+  * @description Increase darkness of a color using a percentage (1-100)
+  *
+  * internaly uses parseToHex
+  */
+  darken: (color: string, percentage: number) => {
+    if (percentage === 0) return parseToHex(color);
+
+    const hex = parseToHex(color);
+    const {h, s, l} = hexToHSL(hex);
+    const newLightness = Math.max(0, l - (l * (percentage / 100)));
+
+    return hslToHex(h, s, newLightness);
+  }
+} as const;
