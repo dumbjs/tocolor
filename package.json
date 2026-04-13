@@ -42,7 +42,7 @@
   "prettier": "@barelyhuman/prettier-config",
   "devDependencies": {
     "@barelyhuman/prettier-config": "^2.0.2",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "rimraf": "^6.1.3",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.3",
